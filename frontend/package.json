@@ -1,5 +1,5 @@
 {
-    "name": "sveltekit-typescript-app",
+    "name": "sveltekit-typescript-ssr-app",
     "version": "1.0.0",
     "engines": {
         "node": ">=22.0.0",
@@ -8,10 +8,11 @@
     "scripts": {
         "dev": "vite dev --port 5173 --host 0.0.0.0",
         "build": "vite build",
-        "preview": "vite preview --port 3000 --host 0.0.0.0"
+        "preview": "vite preview --port 3000 --host 0.0.0.0",
+        "start": "node build"
     },
     "devDependencies": {
-        "@sveltejs/adapter-static": "^2.0.3",
+        "@sveltejs/adapter-node": "^1.3.1",
         "@sveltejs/kit": "^1.20.4",
         "@sveltejs/vite-plugin-svelte": "^2.4.2",
         "svelte": "^4.0.5",

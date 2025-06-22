@@ -16,3 +16,8 @@ export interface ApiError {
     detail: string;
     status: number;
 }
+
+export interface PageData {
+    initialMessage: string;
+    initialHealth: string;
+}
