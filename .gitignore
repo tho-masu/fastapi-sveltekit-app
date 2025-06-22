@@ -61,6 +61,7 @@ vite.config.ts.timestamp-*
 docker-compose.override.yml
 
 # 環境変数・設定ファイル
+env/
 .env
 .env.local
 .env.*.local
