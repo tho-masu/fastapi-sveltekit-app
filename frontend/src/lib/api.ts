@@ -7,7 +7,8 @@ const getApiBaseUrl = (): string => {
         return 'http://backend:8000';
     } else {
         // クライアントサイド
-        return 'http://localhost:8000';
+        const { protocol, hostname } = window.location;
+        return `${protocol}//${hostname}:8000`;
     }
 };
 
