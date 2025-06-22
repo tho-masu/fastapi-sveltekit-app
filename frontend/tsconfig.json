@@ -9,6 +9,18 @@
         "skipLibCheck": true,
         "sourceMap": true,
         "strict": true,
-        "moduleResolution": "bundler"
-    }
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "target": "es2022",
+        "outDir": "./.build"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        ".svelte-kit/**/*",
+        "build/**/*",
+        ".build/**/*"
+    ]
 }
