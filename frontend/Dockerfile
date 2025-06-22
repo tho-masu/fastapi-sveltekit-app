@@ -18,6 +18,9 @@ FROM nginx:alpine
 # ビルド結果をコピー
 COPY --from=builder /app/build /usr/share/nginx/html
 
+# デフォルトのNginx設定でSPAサポートを追加
+RUN sed -i '/location \/ {/a \        try_files $uri $uri/ /index.html;' /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
