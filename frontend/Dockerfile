@@ -1,13 +1,26 @@
-FROM node:18-alpine
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# package.jsonを先にコピー（キャッシュ効率化）
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
+# ソースコードをコピー
 COPY . .
+
+# ビルド実行
 RUN npm run build
 
-EXPOSE 3000
+# 本番環境用イメージ
+FROM nginx:alpine
 
-CMD ["npm", "run", "preview"]
+# ビルド結果をコピー
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Nginxの設定（SPA用）
+COPY nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
